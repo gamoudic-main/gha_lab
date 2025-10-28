@@ -17,5 +17,5 @@ jobs:
     - name: Run hello.sh script
         shell: pwsh
         run: |
-          chmod +x ./script_tests/hello.sh
-        ./script_tests/hello.sh
+          chmod +x ./script_tests/hello.ps1
+        ./script_tests/hello.ps1
