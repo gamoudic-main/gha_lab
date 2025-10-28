@@ -16,5 +16,5 @@ jobs:
 
     - name: Run hello.sh script
       run: |
-        chmod +x ./hello.sh
-        ./hello.sh
+        chmod +x ./script_tests/hello.sh
+        ./script_tests/hello.sh
