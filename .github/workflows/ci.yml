@@ -1,6 +1,6 @@
 
 
-name: Python CI
+name: Step1 Python CI
 on: [push, pull_request]
 jobs:
   build-and-test:
