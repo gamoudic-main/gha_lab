@@ -24,6 +24,28 @@ jobs:
           name: test-report
           path: report.xml
 
+
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Envoyer l'email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # Paramètres du serveur Gmail
+          server_address: smtp.gmail.com
+          server_port: 465 # Port sécurisé SSL
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_PASSWORD }}
+          
+          # Contenu de l'email
+          subject: "Succès du workflow : ${{ github.repository }}"
+          to: chokri.gammoudi@gmail.com
+          from: "GitHub Actions <${{ secrets.GMAIL_USERNAME }}>"
+          body: "Le job s'est terminé avec succès pour le commit ${{ github.sha }}."
+          
+          # Optionnel : Pièce jointe
+          # attachments: report.txt
+
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
