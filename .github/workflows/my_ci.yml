@@ -59,7 +59,7 @@ jobs:
           from: "GitHub Actions <${{ secrets.GMAIL_USERNAME }}>"
           body: | 
                 the Job done with ${{ job.status }} for the commit ${{ github.sha }} .
-                for more details please check  ${{ github.run_url }}
+                for more details please check the atached report
           # Optionnel : Pièce jointe
           attachments: ./report/report.xml
 
