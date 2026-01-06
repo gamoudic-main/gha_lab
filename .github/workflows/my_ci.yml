@@ -22,7 +22,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: report.xml
+          path: ./report/report.xml
 
   deploy:
     needs: build-and-test
@@ -38,6 +38,12 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     steps:
+      - name: Download test report artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: test-report
+          path: ./report
+          
       - name: Send email notification
         uses: dawidd6/action-send-mail@v3
         with:
@@ -52,8 +58,8 @@ jobs:
           to: chokri.gammoudi@gmail.com
           from: "GitHub Actions <${{ secrets.GMAIL_USERNAME }}>"
           body: | 
-                Le job s'est terminé avec ${{ job.status }} pour le commit ${{ github.sha }}.
-                for more details please check : ${{ github.run_url }}
+                the Job done with ${{ job.status }} for the commit ${{ github.sha }} .
+                for more details please check  ${{ github.run_url }}
           # Optionnel : Pièce jointe
           attachments: report.xml
 
