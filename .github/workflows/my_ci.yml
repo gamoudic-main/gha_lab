@@ -61,6 +61,6 @@ jobs:
                 the Job done with ${{ job.status }} for the commit ${{ github.sha }} .
                 for more details please check  ${{ github.run_url }}
           # Optionnel : Pièce jointe
-          attachments: report.xml
+          attachments: ./report/report.xml
 
 
